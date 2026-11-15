@@ -10,14 +10,10 @@
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
-python -m basketball --demo --output-dir runs/before
+python -m basketball --output-dir runs/before
 ```
 
-`--demo` 生成的合成视频含 96 帧，0–31 帧可见，32–63 帧完全遮挡，64–95 帧重新出现。正式验收统一使用[飞书培训文档中任务二的实拍视频](https://gcnhkq914dqv.feishu.cn/wiki/FRLKwEGQmiAteqkJHLUc8nU2ncd#doxcnpqrTZQIZU7CzLTJQpk3Ypg)。篮球短暂完全出画，随后重新进入画面。下载为 `samples/basketball.mp4` 后运行：
-
-```bash
-python -m basketball --input samples/basketball.mp4 --output-dir runs/before
-```
+仓库自带实拍验收视频 `samples/basketball.mp4`，覆盖篮球正常可见、完全出画和重新进入画面三个阶段。上述命令会直接读取它。试跑其他视频时，可以加 `--input 视频路径`。
 
 `tracking.csv` 记录帧号（从 0 开始）、视频时间（秒）、追踪状态、中心坐标和半径。`annotated.mp4` 便于核对画面。可见时应标出当前球的位置，丢失时应让使用者分辨当前位置不可用。
 
